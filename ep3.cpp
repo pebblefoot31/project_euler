@@ -1,4 +1,4 @@
-//stuck on this one-- cannot figure out how to prevent it from calculating 8462696833 as a prime factor of the long number
+//In progress: figuring out how to prevent it from calculating 8462696833 as a prime factor of the long number
 #include <iostream>
 #include <cmath>
 using namespace std;
