@@ -1,2 +1,2 @@
-# project_euler
-A series of mathematical and logic-based coding puzzles that get increasingly complex with each problem.
+# Project Euler
+An attempt to solve mathematical and logic-based coding problems that get increasingly complex with each problem.
