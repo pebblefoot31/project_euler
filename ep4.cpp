@@ -1,72 +1,66 @@
 //Nia Maheshwari
 //Status: in progress
-
 #include <iostream>
+#include <vector>
+#include <unordered_map>
 using namespace std;
 
 int main() {
 
-    int factor1 = 100;
-    int factor2 = 100;
-    long int currProduct;
-    int digit;
-    int num;
-    vector <int> numDigits;
-    vector<int> products;
-    vector<int> palindromes;
+    long factor1 = 999;
+    long factor2 = 999;
 
-    while (true) {
+    long long product;
+    bool flag = false; 
+    long long curr;
+    unordered_map<long ,long> done;
 
-        if (factor1 < 998) {
-            currProduct = factor1 * factor2;
-            products.push_back(currProduct);
-            factor1++;
+    int i = 0;
+    int j = 0;
+
+    vector<int> digits;
+    
+    while (factor1 > 99) {
+
+        factor2 = 999; 
+        while (factor2 > 99) {
+
+            product = factor1*factor2;
+            curr = product;
+            while (product >= 1) {
+                digits.push_back(product%10);
+                product = (product - (product%10))/10;
+            }
+
+            i = 0;
+            j = digits.size()-1;
+
+            //iterating over vector of digits
+            flag = true;
+            while (i < j) {
+               if (digits[i] != digits[j]) {
+                   flag = false;
+                   digits.clear();
+                   break;
+               }
+
+               i++;
+               j--;
+            }
+
+            if (flag) {
+                break;
+            }
+            factor2--;
         }
 
-        if (factor1 == 999 && factor2 < 998) {
-
-            currProduct = factor1 * factor2;
-            products.push_back(currProduct);
-            factor2++;
-        }
-
-        if (factor1 == 999 && factor2 == 999) {
+        if (flag) {
             break;
         }
 
+        factor1--;
     }
 
-    for (size_t i = 0; i < products.size(); i++) {
-
-        num = products[i];
-
-        while (num > 0) {
-            digit = num%10;
-            digits.push_back(digit)
-            num = num/10;
-        }
-        
-        vector<int>::iterator itforward = digits.begin();
-        vector<int>::iterator itbackward = digits.rbegin();
-
-        for (itforward; itforward != itbackward; itforward++) {
-
-            if (*itforward == *itbackward) {
-                itbackward++;
-                same = true;
-            }
-
-            if (!same) {
-                break;
-            }
-        }
-
-        if (same) {
-           palindromes.push_back(products[i]);
-        }
-
-    }
-
-
+    cout << "The largest palindrome is " << curr << endl;
     return 0;
 }
